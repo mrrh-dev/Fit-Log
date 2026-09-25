@@ -11,7 +11,7 @@ export interface Gymcardprops {
 const Gymcard = ({ exercise }: Gymcardprops) => {
   return (
     <Link href={`/exercise/${exercise.id}`}>
-      <div className="overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900 text-white">
+      <div className="overflow-hidden rounded-lg border border-gray-900 bg-[#0d0f14] text-white">
         <Image
           src={exercise.image}
           alt={exercise.name}

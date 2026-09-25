@@ -33,39 +33,94 @@ const Myplanpage = () => {
 
       {/* plan and save table */}
       <div className="w-full h-45 grid grid-cols-3 p-6 items-center mt-8 rounded-2xl bg-[#0d0f14] border border-gray-900 divide-x divide-gray-800/40">
+        {/* for plan card */}
+        {buttontype === `Today's Plan` && (
+          <>
+            <div className="flex flex-col gap-1 pl-4">
+              <div>
+                <p className="text-lg text-gray-500 font-medium tracking-wide">
+                  Exercise
+                </p>
+                <p className="text-4xl mt-2 font-black text-[#ccff00] tracking-tighter antialiased">
+                  {plan.length}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1 pl-6">
+              <div>
+                <p className="text-lg text-gray-500 font-medium tracking-wide">
+                  Duration
+                </p>
+                <p className="text-4xl mt-2 font-black text-white tracking-tighter antialiased">
+                  {plan.reduce((acc, exercise) => {
+                    return acc + exercise.duration;
+                  }, 0)}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1 pl-6">
+              <div>
+                <p className="text-lg text-gray-500 font-medium tracking-wide">
+                  Calories
+                </p>
+                <p className="text-4xl mt-2 font-black text-white tracking-tighter antialiased">
+                  {plan.reduce((acc, exercise) => {
+                    return acc + exercise.caloriesBurned;
+                  }, 0)}
+                </p>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* for saved card */}
         {/* 1st column */}
-        <div className="">
-          <div>
-            <p>Exercise</p>
-            <p>{plan.length}</p>
-          </div>
-        </div>
-        {/* 2nd column */}
-        <div className="">
-          <div>
-            <p>Duration</p>
-            <p>
-              {plan.reduce((acc, exercise) => {
-                return acc + exercise.duration;
-              }, 0)}
-            </p>
-          </div>
-        </div>
-        {/* 3rd column */}
-        <div className="">
-          <div>
-            <p>Calories</p>
-            <p>
-              {plan.reduce((acc, exercise) => {
-                return acc + exercise.caloriesBurned;
-              }, 0)}
-            </p>
-          </div>
-        </div>
+        {buttontype === 'Saved' && (
+          <>
+            <div className="flex flex-col gap-1 pl-4">
+              <div>
+                <p className="text-lg text-gray-500 font-medium tracking-wide">
+                  Exercise
+                </p>
+                <p className="text-4xl mt-2 font-black text-[#ccff00] tracking-tighter antialiased">
+                  {save.length}
+                </p>
+              </div>
+            </div>
+            {/* 2nd column */}
+            <div className="flex flex-col gap-1 pl-6">
+              <div>
+                <p className="text-lg text-gray-500 font-medium tracking-wide">
+                  Duration
+                </p>
+                <p className="text-4xl mt-2 font-black text-white tracking-tighter antialiased">
+                  {save.reduce((acc, exercise) => {
+                    return acc + exercise.duration;
+                  }, 0)}
+                </p>
+              </div>
+            </div>
+            {/* 3rd column */}
+            <div className="flex flex-col gap-1 pl-6">
+              <div>
+                <p className="text-lg text-gray-500 font-medium tracking-wide">
+                  Calories
+                </p>
+                <p className="text-4xl mt-2 font-black text-white tracking-tighter antialiased">
+                  {save.reduce((acc, exercise) => {
+                    return acc + exercise.caloriesBurned;
+                  }, 0)}
+                </p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* today paln and saved and sort section */}
-      <div className="w-70 h-12 mt-8 rounded-2xl bg-gray-900">
+      <div className="w-70 h-12 mt-8 rounded-2xl border-gray-900 bg-[#0d0f14]">
         <div className="flex justify-between px-4 items-center p-1">
           <button
             onClick={() => handlebuttonchange(`Today's Plan`)}

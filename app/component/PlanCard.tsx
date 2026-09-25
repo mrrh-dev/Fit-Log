@@ -30,7 +30,7 @@ const PlanCard = ({ exercise }: Exerciseplanprops) => {
   return (
     <div
       key={exercise.id}
-      className="w-full mt-6 p-4 rounded-2xl bg-gray-900 border border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all hover:border-zinc-700"
+      className="w-full mt-6 p-4 rounded-2xl bg-[#0d0f14] border border-gray-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all"
     >
       {/* Left Section: Image and Text info */}
       <div className="flex items-center gap-4 w-full sm:w-auto">

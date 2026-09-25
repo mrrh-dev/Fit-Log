@@ -77,8 +77,8 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
           )}
         </div>
 
-        <div className="w-full h-full p-4  rounded-2xl border-xl bg-gray-900 flex justify-between items-center">
-          <div className="text-gray-500 text-sm flex-1 divide-y divide-gray-800">
+        <div className="w-full h-full p-4  rounded-2xl border-xl bg-[#0d0f14] flex justify-between items-center">
+          <div className="text-gray-500 text-sm flex-1 divide-y divide-gray-900">
             <h2 className="py-1">EQUIPMENT</h2>
             <h2 className="py-1">DIFICULTY</h2>
             <h2 className="py-1">SETS</h2>
@@ -87,7 +87,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
             <h2 className="py-1">CALORIES</h2>
             <h2 className="py-1">RATING</h2>
           </div>
-          <div className="text-gray-400 text-right flex-1 divide-y text-sm divide-gray-800">
+          <div className="text-gray-400 text-right flex-1 divide-y text-sm divide-gray-900">
             <p className="py-1">{exercise.equipment}</p>
             <p className="py-1">{exercise.difficulty}</p>
             <p className="py-1">{exercise.sets}</p>
