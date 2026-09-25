@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Banner = () => {
@@ -15,9 +16,11 @@ const Banner = () => {
             into today's plan,and watch thr week's work add up`}
           </p>
           <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-8">
-            <button className="px-6 py-3 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
-              BROWSE WORKOUTS
-            </button>
+            <Link href="/library">
+              <button className="px-6 py-3 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
+                BROWSE WORKOUTS
+              </button>
+            </Link>
           </div>
         </div>
         <div className="w-full md:w-1/2 flex justify-center -mt-10">

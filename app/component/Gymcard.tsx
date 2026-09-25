@@ -2,6 +2,9 @@ import React from 'react';
 import { Exercise } from '../types/gymtypes';
 import Image from 'next/image';
 import Link from 'next/link';
+import { IoMdFlame } from 'react-icons/io';
+import { FaRegClock } from 'react-icons/fa';
+import { CiStar } from 'react-icons/ci';
 export interface Gymcardprops {
   exercise: Exercise;
 }
@@ -34,16 +37,22 @@ const Gymcard = ({ exercise }: Gymcardprops) => {
           <p className="mt-1 text-[10px] text-zinc-400">{exercise.equipment}</p>
 
           <div className="mt-2 flex items-center justify-between text-[10px] text-zinc-300">
-            <span className="flex items-center gap-1">
-              <span className="text-lime-400">◷</span>
+            <span className="flex font-bold gap-1">
+              <span>
+                <FaRegClock />
+              </span>
               {exercise.duration} min
             </span>
-            <span className="flex items-center gap-1">
-              <span className="text-lime-400">🔥</span>
+            <span className="flex font-bold gap-1">
+              <span>
+                <IoMdFlame />
+              </span>
               {exercise.caloriesBurned} kcal
             </span>
-            <span className="flex items-center gap-1">
-              <span className="text-lime-400">★</span>
+            <span className="flex font-bold gap-1">
+              <span>
+                <CiStar />
+              </span>
               {exercise.rating}
             </span>
           </div>

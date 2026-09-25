@@ -30,7 +30,39 @@ const Myplanpage = () => {
           Cap of five lifts for today. Finish them, then load more.
         </p>
       </div>
-      <div className="w-full h-45 mt-8 rounded-2xl bg-gray-900"></div>
+
+      {/* plan and save table */}
+      <div className="w-full h-45 grid grid-cols-3 p-6 items-center mt-8 rounded-2xl bg-[#0d0f14] border border-gray-900 divide-x divide-gray-800/40">
+        {/* 1st column */}
+        <div className="">
+          <div>
+            <p>Exercise</p>
+            <p>{plan.length}</p>
+          </div>
+        </div>
+        {/* 2nd column */}
+        <div className="">
+          <div>
+            <p>Duration</p>
+            <p>
+              {plan.reduce((acc, exercise) => {
+                return acc + exercise.duration;
+              }, 0)}
+            </p>
+          </div>
+        </div>
+        {/* 3rd column */}
+        <div className="">
+          <div>
+            <p>Calories</p>
+            <p>
+              {plan.reduce((acc, exercise) => {
+                return acc + exercise.caloriesBurned;
+              }, 0)}
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* today paln and saved and sort section */}
       <div className="w-70 h-12 mt-8 rounded-2xl bg-gray-900">
@@ -51,7 +83,21 @@ const Myplanpage = () => {
       </div>
       <div>
         <div>
-          {countplan || countsave === 0 ? (
+          {buttontype === `Today's Plan` && countplan === 0 ? (
+            <div className="w-full h-80 mt-4 flex items-center justify-center  border-gray-800 border-2 border-dotted rounded-xl">
+              <div>
+                <h1 className="mx-12 text-xl font-bold ">NOTHING HERE YET</h1>
+                <p>Browse the library and add a lift to get today moving.</p>
+                <button className="px-6 py-2.5 mt-8 mx-18 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
+                  <Link href="/workout">Go to workouts</Link>
+                </button>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+
+          {buttontype === `Saved` && countsave === 0 ? (
             <div className="w-full h-80 mt-4 flex items-center justify-center  border-gray-800 border-2 border-dotted rounded-xl">
               <div>
                 <h1 className="mx-12 text-xl font-bold ">NOTHING HERE YET</h1>
