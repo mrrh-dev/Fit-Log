@@ -64,7 +64,7 @@ const Navbar = () => {
         </div>
 
         {ismenuopen && (
-          <div className="md:hidden mt-4 border-t border-gray-200 pt-4">
+          <div className="md:hidden mt-4 border-t border-gray-900 pt-4">
             <ul className="flex flex-col gap-4 text-lg text-gray-500 font-semibold">
               {Links}
             </ul>
