@@ -22,6 +22,9 @@ const SavedCard = ({ exercise }: Exercisesaveprops) => {
     toast(`Remove ${exercise.name} exercise successfully`);
     setCountersave(countsave - 1);
   };
+  const handleviewdetails = () => {
+    toast('Opening details page');
+  };
   return (
     <div
       key={exercise.id}
@@ -67,11 +70,13 @@ const SavedCard = ({ exercise }: Exercisesaveprops) => {
 
       {/* Right Section: Action Controls */}
       <div className="flex items-center gap-2 w-full sm:w-auto justify-end border-t border-gray-800 pt-3 sm:pt-0 sm:border-0">
-        <Link href={`/exercise/${exercise.id}`}>
-          <button className="px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-gray-800 rounded-xl transition-colors">
-            View Details
-          </button>
-        </Link>
+        <button
+          onClick={() => handleviewdetails()}
+          className="px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-gray-800 rounded-xl transition-colors"
+        >
+          <Link href={`/exercise/${exercise.id}`}>View Details</Link>
+        </button>
+
         {/* <button className="px-3 py-1.5 text-xs font-semibold text-black bg-lime-400 hover:bg-lime-700 rounded-xl ">
                      Mark as Done
                    </button> */}

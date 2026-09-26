@@ -26,6 +26,10 @@ const PlanCard = ({ exercise }: Exerciseplanprops) => {
   };
   const handlemarkasdone = () => {
     setMark(true);
+    toast('This workout done');
+  };
+  const handleviewdetails = () => {
+    toast('Opening details page');
   };
   return (
     <div
@@ -72,11 +76,13 @@ const PlanCard = ({ exercise }: Exerciseplanprops) => {
 
       {/* Right Section: Action Controls */}
       <div className="flex items-center gap-2 w-full sm:w-auto justify-end border-t border-gray-800 pt-3 sm:pt-0 sm:border-0">
-        <Link href={`/exercise/${exercise.id}`}>
-          <button className="px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-gray-800 rounded-xl transition-colors">
-            View Details
-          </button>
-        </Link>
+        <button
+          onClick={() => handleviewdetails()}
+          className="px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-gray-800 rounded-xl transition-colors"
+        >
+          <Link href={`/exercise/${exercise.id}`}>View Details</Link>
+        </button>
+
         <button
           onClick={() => handlemarkasdone()}
           className="px-3 py-1.5 text-xs font-semibold text-black bg-lime-400 hover:bg-lime-700 rounded-xl "
