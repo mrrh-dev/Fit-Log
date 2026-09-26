@@ -28,6 +28,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
     else {
       setCounterplan(countplan + 1);
       setPlan([...plan, exercise]);
+      toast(`Added this Exercise to Today's Plan`);
     }
   };
   const handlesaved = () => {
@@ -35,6 +36,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
     else {
       setCountersave(countsave + 1);
       setSave([...save, exercise]);
+      toast(`Added this Exercise to Saved`);
     }
   };
 

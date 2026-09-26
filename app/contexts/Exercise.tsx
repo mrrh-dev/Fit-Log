@@ -30,7 +30,7 @@ const ExerciseProvider = ({ children }: { children: ReactNode }) => {
   const [save, setSave] = useState<Exercise[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
-  // Load from localStorage once, on mount
+  // Load from localStorage
   useEffect(() => {
     try {
       const storedPlan = localStorage.getItem('plan');
@@ -52,12 +52,10 @@ const ExerciseProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Persist plan whenever it changes (after hydration)
   useEffect(() => {
     if (hydrated) localStorage.setItem('plan', JSON.stringify(plan));
   }, [plan, hydrated]);
 
-  // Persist save whenever it changes (after hydration)
   useEffect(() => {
     if (hydrated) localStorage.setItem('save', JSON.stringify(save));
   }, [save, hydrated]);
