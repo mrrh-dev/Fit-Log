@@ -1,19 +1,17 @@
-import React, { useContext } from 'react';
-import { ExerciseContext } from '../contexts/Exercise';
-import Image from 'next/image';
-import { FaRegClock } from 'react-icons/fa';
-import { IoMdFlame } from 'react-icons/io';
-import { CiSquareRemove, CiStar } from 'react-icons/ci';
-import Link from 'next/link';
+import React from 'react';
 import SavedCard from './SavedCard';
+import { Exercise } from '../types/gymtypes';
 
-const Saved = () => {
-  const { plan, setPlan, save, setSave } = useContext(ExerciseContext);
+interface SavedProps {
+  exercises: Exercise[];
+}
+
+const Saved = ({ exercises }: SavedProps) => {
   return (
     <div>
-      {save.map((exercise) => {
-        return <SavedCard key={exercise.id} exercise={exercise}></SavedCard>;
-      })}
+      {exercises.map((exercise) => (
+        <SavedCard key={exercise.id} exercise={exercise} />
+      ))}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const Gymcard = ({ exercise }: Gymcardprops) => {
             {exercise.muscleGroups.slice(0, 2).map((muscle) => (
               <span
                 key={muscle}
-                className="rounded-full bg-lime-400 px-2 py-0.5 text-[9px] font-semibold text-black"
+                className="rounded-full bg-lime-400 px-2 py-0.5 text-sm font-semibold text-black"
               >
                 {muscle}
               </span>
@@ -34,9 +34,9 @@ const Gymcard = ({ exercise }: Gymcardprops) => {
             {exercise.name}
           </h2>
 
-          <p className="mt-1 text-[10px] text-zinc-400">{exercise.equipment}</p>
+          <p className="mt-1 text-sm text-zinc-400">{exercise.equipment}</p>
 
-          <div className="mt-2 flex items-center justify-between text-[10px] text-zinc-300">
+          <div className="mt-2 flex items-center justify-between text-xs text-zinc-300">
             <span className="flex font-bold gap-1">
               <span>
                 <FaRegClock />

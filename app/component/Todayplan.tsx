@@ -1,20 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { ExerciseContext } from '../contexts/Exercise';
-import Image from 'next/image';
-import { FaRegClock } from 'react-icons/fa';
-import { IoMdFlame } from 'react-icons/io';
-import { CiSquareRemove, CiStar } from 'react-icons/ci';
-import Link from 'next/link';
+import React from 'react';
 import PlanCard from './PlanCard';
+import { Exercise } from '../types/gymtypes';
 
-const Todayplan = () => {
-  const { plan } = useContext(ExerciseContext);
+interface TodayplanProps {
+  exercises: Exercise[];
+}
 
+const Todayplan = ({ exercises }: TodayplanProps) => {
   return (
     <div>
-      {plan.map((exercise) => {
-        return <PlanCard key={exercise.id} exercise={exercise}></PlanCard>;
-      })}
+      {exercises.map((exercise) => (
+        <PlanCard key={exercise.id} exercise={exercise} />
+      ))}
     </div>
   );
 };

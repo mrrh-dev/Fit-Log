@@ -39,26 +39,26 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-18 items-start w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start w-full">
       {exercise.image && (
-        <div className="rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl">
+        <div className="w-full rounded-2xl overflow-hidden ">
           <Image
             src={exercise.image}
             alt={exercise.name}
-            width={300}
-            height={400}
-            className="h-120 w-300 object-cover"
+            width={600}
+            height={700}
+            className="w-full h-auto max-h-[600px] object-cover rounded-2xl"
           />
         </div>
       )}
 
-      <div className="flex flex-col space-y-6">
+      <div className="flex flex-col  gap-6">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-wide text-zinc-100 uppercase">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-wide text-zinc-100 uppercase">
             {exercise.name}
           </h1>
           {exercise.description && (
-            <p className="text-zinc-400 mt-2 text-sm leading-relaxed max-w-xl">
+            <p className="text-zinc-400 mt-2 text-sm sm:text-base max-w-xl">
               {exercise.description}
             </p>
           )}
@@ -70,7 +70,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
               {exercise.muscleGroups[0]}
             </span>
           )}
-          {exercise.muscleGroups && (
+          {exercise.muscleGroups.length > 1 && (
             <span className="bg-[#bfff00] text-black font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
               {exercise.muscleGroups[1]}
             </span>
@@ -93,7 +93,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
             <p className="py-1">{exercise.sets}</p>
             <p className="py-1">{exercise.reps}</p>
             <p className="py-1">{exercise.duration}</p>
-            <p className="py-1">{exercise.duration}</p>
+            <p className="py-1">{exercise.caloriesBurned}</p>
             <p className="py-1">{exercise.rating}</p>
           </div>
         </div>
@@ -104,7 +104,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
               Instructions
             </h3>
             {Array.isArray(exercise.instructions) ? (
-              <ol className="space-y-2.5 text-zinc-400 text-xs leading-relaxed list-decimal list-inside pl-1">
+              <ol className="space-y-2.5 text-zinc-300 text-sm font-sans leading-relaxed list-decimal list-inside pl-1">
                 {exercise.instructions.map((step, index) => (
                   <li key={index} className="pl-1">
                     <span className="text-zinc-300">{step}</span>
@@ -112,24 +112,24 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
                 ))}
               </ol>
             ) : (
-              <p className="text-zinc-300 text-xs leading-relaxed whitespace-pre-line">
+              <p className="text-zinc-300 text-sm leading-relaxed whitespace-pre-line">
                 {exercise.instructions}
               </p>
             )}
           </div>
         )}
 
-        <div className="flex flex-wrap gap-3 pt-4">
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
           <button
             onClick={() => handleaddplan()}
-            className="bg-[#bfff00] hover:bg-[#a6de00] text-black font-bold text-xs py-3 px-5 rounded-lg flex items-center gap-2 transition-all shadow-md"
+            className="bg-[#bfff00] hover:bg-[#a6de00] text-black font-bold text-xs py-3 px-5 rounded-lg flex justify-center items-center gap-2 transition-all shadow-md"
           >
             <IoMdAdd className="text-base" /> Add to todays plan
           </button>
 
           <button
             onClick={() => handlesaved()}
-            className="bg-transparent hover:bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold text-xs py-3 px-5 rounded-lg flex items-center gap-2 transition-all"
+            className="bg-transparent hover:bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold text-xs py-3 px-5 rounded-lg flex justify-center items-center gap-2 transition-all"
           >
             <FaRegBookmark className="text-xs text-zinc-400" /> Save for later
           </button>
