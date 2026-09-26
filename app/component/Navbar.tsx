@@ -7,6 +7,7 @@ import { ExerciseContext } from '../contexts/Exercise';
 const Navbar = () => {
   const { countplan, countsave } = useContext(ExerciseContext);
   const pathname = usePathname();
+  const [ismenuopen, setismenuopen] = useState(false);
   const Links = (
     <>
       <li className={pathname === '/workout' ? 'text-lime-400 ' : ''}>
@@ -17,11 +18,18 @@ const Navbar = () => {
       </li>
     </>
   );
-  //const [ismenuopen, setismenuopen] = useState(false);
   return (
     <nav className="sticky top-0 bg-black z-50 border-b border-gray-900">
       <div className="container mx-auto px-4 py-4 md:py-5">
         <div className="flex justify-between items-center">
+          <button
+            onClick={() => setismenuopen(!ismenuopen)}
+            className="md:hidden text-2xl text-gray-600 ml-2"
+            aria-label="Toggle menu"
+          >
+            {ismenuopen ? '✕' : '☰'}
+          </button>
+
           <div className="flex justify-between items-center gap-3">
             <div>
               <Image
@@ -35,11 +43,6 @@ const Navbar = () => {
           </div>
           <div className="hidden md:block">
             <ul className="text-lg flex gap-6 text-gray-500 font-semibold">
-              {/* <li className="text-pink-500 cursor-pointer">Home</li>
-              <li className="cursor-pointer">Technologies</li>
-              <li className="cursor-pointer">Projects</li>
-              <li className="cursor-pointer">About</li>
-              <li className="cursor-pointer">Contact</li> */}
               {Links}
             </ul>
           </div>
@@ -58,27 +61,15 @@ const Navbar = () => {
               {countsave}
             </span>
           </div>
-          {/* <button
-            onClick={() => setismenuopen(!ismenuopen)}
-            className="md:hidden text-3xl text-gray-600 ml-2"
-            aria-label="Toggle menu"
-          >
-            {ismenuopen ? '✕' : '☰'}
-          </button> */}
         </div>
 
-        {/* {ismenuopen && (
+        {ismenuopen && (
           <div className="md:hidden mt-4 border-t border-gray-200 pt-4">
             <ul className="flex flex-col gap-4 text-lg text-gray-500 font-semibold">
-              {/*  <li className="text-pink-500 cursor-pointer">Home</li>
-              <li className="cursor-pointer">Technologies</li>
-              <li className="cursor-pointer">Projects</li>
-              <li className="cursor-pointer">About</li>
-              <li className="cursor-pointer">Contact</li> 
               {Links}
             </ul>
           </div>
-        )}  */}
+        )}
       </div>
     </nav>
   );
