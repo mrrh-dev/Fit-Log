@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useContext, useState } from 'react';
 import { ExerciseContext } from '../contexts/Exercise';
 import Link from 'next/link';
@@ -10,8 +9,6 @@ type SortOption = 'Duration' | 'Calories' | 'Rating';
 
 const Myplanpage = () => {
   const { countplan, countsave, plan, save } = useContext(ExerciseContext);
-
-  // Today's Plan / Saved
   const [buttontype, setbuttontype] = useState<`Today's Plan` | 'Saved'>(
     'Saved',
   );
@@ -23,7 +20,7 @@ const Myplanpage = () => {
     setbuttontype(type);
   };
 
-  // Which list are we currently displaying?
+  //  list that are we currently displaying
   const currentList = buttontype === `Today's Plan` ? plan : save;
 
   // Sort current list
@@ -44,9 +41,8 @@ const Myplanpage = () => {
   });
 
   return (
-    <div className="container mx-auto">
-      {/* Header */}
-      <div className="mt-12">
+    <div className="container mx-auto px-4 sm:px-6">
+      <div className="mt-8 sm:mt-10 md:mt-12">
         <h1 className="text-3xl font-bold">MY PLAN</h1>
 
         <p className="text-gray-500">
@@ -54,12 +50,11 @@ const Myplanpage = () => {
         </p>
       </div>
 
-      {/* Plan / Saved Statistics */}
-      <div className="w-full h-45 grid grid-cols-3 p-6 items-center mt-8 rounded-2xl bg-[#0d0f14] border border-gray-900 divide-x divide-gray-800/40">
-        {/* Today's Plan Statistics */}
+      <div className="w-full min-h-45 grid grid-cols-1 sm:grid-cols-3 p-4 sm:p-6 items-center mt-8 rounded-2xl bg-[#0d0f14] border border-gray-900 divide-y sm:divide-y-0 sm:divide-x divide-gray-800/40">
+        {/* Today's Plan */}
         {buttontype === `Today's Plan` && (
           <>
-            <div className="flex flex-col gap-1 pl-4">
+            <div className="flex flex-col gap-1 py-4 sm:py-0 pl-4">
               <p className="text-lg text-gray-500 font-medium tracking-wide">
                 Exercise
               </p>
@@ -69,7 +64,7 @@ const Myplanpage = () => {
               </p>
             </div>
 
-            <div className="flex flex-col gap-1 pl-6">
+            <div className="flex flex-col gap-1 py-4 sm:py-0 pl-4 sm:pl-6">
               <p className="text-lg text-gray-500 font-medium tracking-wide">
                 Duration
               </p>
@@ -81,7 +76,7 @@ const Myplanpage = () => {
               </p>
             </div>
 
-            <div className="flex flex-col gap-1 pl-6">
+            <div className="flex flex-col gap-1 py-4 sm:py-0 pl-4 sm:pl-6">
               <p className="text-lg text-gray-500 font-medium tracking-wide">
                 Calories
               </p>
@@ -95,10 +90,10 @@ const Myplanpage = () => {
           </>
         )}
 
-        {/* Saved Statistics */}
+        {/* Saved */}
         {buttontype === 'Saved' && (
           <>
-            <div className="flex flex-col gap-1 pl-4">
+            <div className="flex flex-col gap-1 py-4 sm:py-0 pl-4">
               <p className="text-lg text-gray-500 font-medium tracking-wide">
                 Exercise
               </p>
@@ -108,7 +103,7 @@ const Myplanpage = () => {
               </p>
             </div>
 
-            <div className="flex flex-col gap-1 pl-6">
+            <div className="flex flex-col gap-1 py-4 sm:py-0 pl-4 sm:pl-6">
               <p className="text-lg text-gray-500 font-medium tracking-wide">
                 Duration
               </p>
@@ -120,7 +115,7 @@ const Myplanpage = () => {
               </p>
             </div>
 
-            <div className="flex flex-col gap-1 pl-6">
+            <div className="flex flex-col gap-1 py-4 sm:py-0 pl-4 sm:pl-6">
               <p className="text-lg text-gray-500 font-medium tracking-wide">
                 Calories
               </p>
@@ -135,10 +130,10 @@ const Myplanpage = () => {
         )}
       </div>
 
-      {/* Today's Plan / Saved + Sort */}
-      <div className="flex justify-between items-center mt-8">
-        {/* Today's Plan / Saved buttons */}
-        <div className="w-70 h-12 rounded-2xl bg-[#0d0f14]">
+      {/* Today's Plan,Saved and Sort */}
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mt-8">
+        {/* Today's Plan and Saved buttons */}
+        <div className="w-full sm:w-70 h-12 rounded-2xl bg-[#0d0f14]">
           <div className="flex justify-between px-4 items-center p-1">
             <button
               onClick={() => handlebuttonchange(`Today's Plan`)}
@@ -165,7 +160,7 @@ const Myplanpage = () => {
         </div>
 
         {/* Sort By */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between sm:justify-start gap-3">
           <span className="text-gray-500">Sort By</span>
 
           <select
@@ -184,28 +179,31 @@ const Myplanpage = () => {
 
       {/* Empty Today's Plan */}
       {buttontype === `Today's Plan` && countplan === 0 && (
-        <div className="w-full h-80 mt-4 flex items-center justify-center border-gray-800 border-2 border-dotted rounded-xl">
-          <div>
-            <h1 className="mx-12 text-xl font-bold">NOTHING HERE YET</h1>
+        <div className="w-full min-h-80 mt-4 px-4 flex items-center justify-center border-gray-800 border-2 border-dotted rounded-xl">
+          <div className="text-center">
+            <h1 className="text-xl font-bold">NOTHING HERE YET</h1>
 
-            <p>Browse the library and add a lift to get today moving.</p>
+            <p className="mt-2">
+              Browse the library and add a lift to get today moving.
+            </p>
 
-            <button className="px-6 py-2.5 mt-8 mx-18 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
+            <button className="px-6 py-2.5 mt-8 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
               <Link href="/workout">Go to workouts</Link>
             </button>
           </div>
         </div>
       )}
 
-      {/* Empty Saved */}
       {buttontype === 'Saved' && countsave === 0 && (
-        <div className="w-full h-80 mt-4 flex items-center justify-center border-gray-800 border-2 border-dotted rounded-xl">
-          <div>
-            <h1 className="mx-12 text-xl font-bold">NOTHING HERE YET</h1>
+        <div className="w-full min-h-80 mt-4 px-4 flex items-center justify-center border-gray-800 border-2 border-dotted rounded-xl">
+          <div className="text-center">
+            <h1 className="text-xl font-bold">NOTHING HERE YET</h1>
 
-            <p>Browse the library and add a lift to get today moving.</p>
+            <p className="mt-2">
+              Browse the library and add a lift to get today moving.
+            </p>
 
-            <button className="px-6 py-2.5 mt-8 mx-18 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
+            <button className="px-6 py-2.5 mt-8 text-sm font-semibold text-black rounded-2xl bg-lime-500 hover:opacity-95 shadow-sm">
               <Link href="/workout">Go to workouts</Link>
             </button>
           </div>

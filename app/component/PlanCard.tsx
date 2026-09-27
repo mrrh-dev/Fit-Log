@@ -15,29 +15,34 @@ export interface Exerciseplanprops {
 const PlanCard = ({ exercise }: Exerciseplanprops) => {
   const { countplan, setCounterplan, plan, setPlan } =
     useContext(ExerciseContext);
+
   const [isMark, setMark] = useState(false);
+
   const handleremove = (exercise: Exercise) => {
     const remaining_exercise_plan = plan.filter(
       (exerciseplan) => exerciseplan.id !== exercise.id,
     );
+
     setPlan(remaining_exercise_plan);
     toast(`Remove ${exercise.name} exercise successfully`);
     setCounterplan(countplan - 1);
   };
+
   const handlemarkasdone = () => {
     setMark(true);
     toast('This workout done');
   };
+
   const handleviewdetails = () => {
     toast('Opening details page');
   };
+
   return (
     <div
       key={exercise.id}
-      className="w-full mt-6 p-4 rounded-2xl bg-[#0d0f14] border border-gray-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all"
+      className="w-full mt-6 p-4 rounded-2xl bg-[#0d0f14] border border-gray-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
     >
-      {/* Left Section: Image and Text info */}
-      <div className="flex items-center gap-4 w-full sm:w-auto">
+      <div className="flex items-start sm:items-center gap-4 w-full sm:w-auto min-w-0">
         <div className="relative overflow-hidden rounded-xl bg-gray-800 shrink-0">
           <Image
             src={exercise.image}
@@ -52,21 +57,23 @@ const PlanCard = ({ exercise }: Exerciseplanprops) => {
           <h3 className="text-white font-semibold text-base truncate">
             {exercise.name}
           </h3>
+
           <p className="text-zinc-400 text-xs mt-0.5 capitalize">
             {exercise.equipment}
           </p>
 
-          {/* Badges / Meta row */}
-          <div className="mt-3 flex items-center gap-3 text-xs text-zinc-300 font-medium">
-            <span className="flex items-center gap-1.5  px-2 py-1 rounded-md">
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-zinc-300 font-medium">
+            <span className="flex items-center gap-1.5 px-2 py-1 rounded-md">
               <FaRegClock className="text-lime-400" />
               {exercise.duration} min
             </span>
-            <span className="flex items-center gap-1.5  px-2 py-1 rounded-md">
+
+            <span className="flex items-center gap-1.5 px-2 py-1 rounded-md">
               <IoMdFlame className="text-lime-400" />
               {exercise.caloriesBurned} kcal
             </span>
-            <span className="flex items-center gap-1.5  px-2 py-1 rounded-md">
+
+            <span className="flex items-center gap-1.5 px-2 py-1 rounded-md">
               <CiStar className="text-lime-400 text-sm" />
               {exercise.rating}
             </span>
@@ -74,8 +81,7 @@ const PlanCard = ({ exercise }: Exerciseplanprops) => {
         </div>
       </div>
 
-      {/* Right Section: Action Controls */}
-      <div className="flex items-center gap-2 w-full sm:w-auto justify-end border-t border-gray-800 pt-3 sm:pt-0 sm:border-0">
+      <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end border-t border-gray-800 pt-3 sm:pt-0 sm:border-0">
         <button
           onClick={() => handleviewdetails()}
           className="px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-gray-800 rounded-xl transition-colors"
@@ -85,16 +91,17 @@ const PlanCard = ({ exercise }: Exerciseplanprops) => {
 
         <button
           onClick={() => handlemarkasdone()}
-          className="px-3 py-1.5 text-xs font-semibold text-black bg-lime-400 hover:bg-lime-700 rounded-xl "
+          className="px-3 py-1.5 text-xs font-semibold text-black bg-lime-400 hover:bg-lime-700 rounded-xl"
         >
           {isMark ? 'Done' : 'Mark as Done'}
         </button>
+
         <button
           onClick={() => handleremove(exercise)}
           className="p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
           aria-label="Remove exercise"
         >
-          X{/* <CiSquareRemove className="text-xl" /> */}
+          X
         </button>
       </div>
     </div>

@@ -17,7 +17,7 @@ const Gymcard = ({ exercise }: Gymcardprops) => {
           alt={exercise.name}
           width={300}
           height={400}
-          className="h-70 w-full object-cover"
+          className="h-60 sm:h-70 w-full object-cover"
         />
         <div className="p-3">
           <div className="mb-2 flex flex-wrap gap-1.5">
@@ -36,7 +36,7 @@ const Gymcard = ({ exercise }: Gymcardprops) => {
 
           <p className="mt-1 text-sm text-zinc-400">{exercise.equipment}</p>
 
-          <div className="mt-2 flex items-center justify-between text-xs text-zinc-300">
+          <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-300">
             <span className="flex font-bold gap-1">
               <span>
                 <FaRegClock />

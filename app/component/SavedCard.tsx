@@ -7,9 +7,11 @@ import { CiSquareRemove, CiStar } from 'react-icons/ci';
 import Link from 'next/link';
 import { ExerciseContext } from '../contexts/Exercise';
 import { toast } from 'react-toastify';
+
 export interface Exercisesaveprops {
   exercise: Exercise;
 }
+
 const SavedCard = ({ exercise }: Exercisesaveprops) => {
   const { countsave, setCountersave, save, setSave } =
     useContext(ExerciseContext);
@@ -18,20 +20,22 @@ const SavedCard = ({ exercise }: Exercisesaveprops) => {
     const remaining_exercise_save = save.filter(
       (exerciseplan) => exerciseplan.id !== exercise.id,
     );
+
     setSave(remaining_exercise_save);
     toast(`Remove ${exercise.name} exercise successfully`);
     setCountersave(countsave - 1);
   };
+
   const handleviewdetails = () => {
     toast('Opening details page');
   };
+
   return (
     <div
       key={exercise.id}
-      className="w-full mt-6 p-4 rounded-2xl bg-[#0d0f14] border border-gray-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all "
+      className="w-full mt-6 p-4 rounded-2xl bg-[#0d0f14] border border-gray-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
     >
-      {/* Left Section: Image and Text info */}
-      <div className="flex items-center gap-4 w-full sm:w-auto">
+      <div className="flex items-start sm:items-center gap-4 w-full sm:w-auto min-w-0">
         <div className="relative overflow-hidden rounded-xl bg-gray-800 shrink-0">
           <Image
             src={exercise.image}
@@ -46,21 +50,23 @@ const SavedCard = ({ exercise }: Exercisesaveprops) => {
           <h3 className="text-white font-semibold text-base truncate">
             {exercise.name}
           </h3>
+
           <p className="text-zinc-400 text-xs mt-0.5 capitalize">
             {exercise.equipment}
           </p>
 
-          {/* Badges / Meta row */}
-          <div className="mt-3 flex items-center gap-3 text-xs text-zinc-300 font-medium">
-            <span className="flex items-center gap-1.5  px-2 py-1 rounded-md">
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-zinc-300 font-medium">
+            <span className="flex items-center gap-1.5 px-2 py-1 rounded-md">
               <FaRegClock className="text-lime-400" />
               {exercise.duration} min
             </span>
-            <span className="flex items-center gap-1.5  px-2 py-1 rounded-md">
+
+            <span className="flex items-center gap-1.5 px-2 py-1 rounded-md">
               <IoMdFlame className="text-lime-400" />
               {exercise.caloriesBurned} kcal
             </span>
-            <span className="flex items-center gap-1.5  px-2 py-1 rounded-md">
+
+            <span className="flex items-center gap-1.5 px-2 py-1 rounded-md">
               <CiStar className="text-lime-400 text-sm" />
               {exercise.rating}
             </span>
@@ -68,8 +74,7 @@ const SavedCard = ({ exercise }: Exercisesaveprops) => {
         </div>
       </div>
 
-      {/* Right Section: Action Controls */}
-      <div className="flex items-center gap-2 w-full sm:w-auto justify-end border-t border-gray-800 pt-3 sm:pt-0 sm:border-0">
+      <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end border-t border-gray-800 pt-3 sm:pt-0 sm:border-0">
         <button
           onClick={() => handleviewdetails()}
           className="px-3 py-1.5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-gray-800 rounded-xl transition-colors"
@@ -77,9 +82,6 @@ const SavedCard = ({ exercise }: Exercisesaveprops) => {
           <Link href={`/exercise/${exercise.id}`}>View Details</Link>
         </button>
 
-        {/* <button className="px-3 py-1.5 text-xs font-semibold text-black bg-lime-400 hover:bg-lime-700 rounded-xl ">
-                     Mark as Done
-                   </button> */}
         <button
           onClick={() => handleremove(exercise)}
           className="p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"

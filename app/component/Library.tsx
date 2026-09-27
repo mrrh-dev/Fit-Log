@@ -2,9 +2,7 @@ import React from 'react';
 import Gymcard from './Gymcard';
 import { Exercise } from '../types/gymtypes';
 const getLibrary = async () => {
-  const res = await fetch('https://api.abcz.workers.dev/api/fitlog', {
-    cache: 'force-cache',
-  });
+  const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
   if (!res.ok) throw new Error('fetching is not successful');
   return res.json();
 };

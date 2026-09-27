@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 export interface Exerciseprops {
   exercise: Exercise;
 }
+
 const Detailgymcard = ({ exercise }: Exerciseprops) => {
   const {
     countplan,
@@ -21,8 +22,10 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
     save,
     setSave,
   } = useContext(ExerciseContext);
+
   const isadded = plan.some((item) => item.id === exercise.id);
   const issaved = save.some((item) => item.id === exercise.id);
+
   const handleaddplan = () => {
     if (isadded) toast.warn('This is already added');
     else {
@@ -31,6 +34,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
       toast(`Added this Exercise to Today's Plan`);
     }
   };
+
   const handlesaved = () => {
     if (issaved) toast.warn('This is already saved');
     else {
@@ -43,22 +47,23 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start w-full">
       {exercise.image && (
-        <div className="w-full rounded-2xl overflow-hidden ">
+        <div className="w-full rounded-2xl overflow-hidden">
           <Image
             src={exercise.image}
             alt={exercise.name}
             width={600}
             height={700}
-            className="w-full h-auto max-h-[600px] object-cover rounded-2xl"
+            className="w-full h-80 sm:h-96 lg:h-auto max-h-[600px] object-cover rounded-2xl"
           />
         </div>
       )}
 
-      <div className="flex flex-col  gap-6">
+      <div className="flex flex-col gap-6">
         <div>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-wide text-zinc-100 uppercase">
             {exercise.name}
           </h1>
+
           {exercise.description && (
             <p className="text-zinc-400 mt-2 text-sm sm:text-base max-w-xl">
               {exercise.description}
@@ -72,6 +77,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
               {exercise.muscleGroups[0]}
             </span>
           )}
+
           {exercise.muscleGroups.length > 1 && (
             <span className="bg-[#bfff00] text-black font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
               {exercise.muscleGroups[1]}
@@ -79,7 +85,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
           )}
         </div>
 
-        <div className="w-full h-full p-4  rounded-2xl border-xl bg-[#0d0f14] flex justify-between items-center">
+        <div className="w-full p-4 rounded-2xl border-xl bg-[#0d0f14] flex justify-between items-center">
           <div className="text-gray-500 text-sm flex-1 divide-y divide-gray-900">
             <h2 className="py-1">EQUIPMENT</h2>
             <h2 className="py-1">DIFICULTY</h2>
@@ -89,6 +95,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
             <h2 className="py-1">CALORIES</h2>
             <h2 className="py-1">RATING</h2>
           </div>
+
           <div className="text-gray-400 text-right flex-1 divide-y text-sm divide-gray-900">
             <p className="py-1">{exercise.equipment}</p>
             <p className="py-1">{exercise.difficulty}</p>
@@ -105,6 +112,7 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-200 mb-3">
               Instructions
             </h3>
+
             {Array.isArray(exercise.instructions) ? (
               <ol className="space-y-2.5 text-zinc-300 text-sm font-sans leading-relaxed list-decimal list-inside pl-1">
                 {exercise.instructions.map((step, index) => (
@@ -126,14 +134,16 @@ const Detailgymcard = ({ exercise }: Exerciseprops) => {
             onClick={() => handleaddplan()}
             className="bg-[#bfff00] hover:bg-[#a6de00] text-black font-bold text-xs py-3 px-5 rounded-lg flex justify-center items-center gap-2 transition-all shadow-md"
           >
-            <IoMdAdd className="text-base" /> Add to todays plan
+            <IoMdAdd className="text-base" />
+            Add to todays plan
           </button>
 
           <button
             onClick={() => handlesaved()}
             className="bg-transparent hover:bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold text-xs py-3 px-5 rounded-lg flex justify-center items-center gap-2 transition-all"
           >
-            <FaRegBookmark className="text-xs text-zinc-400" /> Save for later
+            <FaRegBookmark className="text-xs text-zinc-400" />
+            Save for later
           </button>
         </div>
       </div>
